@@ -1,12 +1,19 @@
 'use strict';
 
 const productName = prompt("Наименование товара");
-const productQuantity = Number(prompt("Количество товара")) || 0;
+const productQuantityInput = prompt("Количество товара");
 const productCategory = prompt("Категория товара");
-const productPrice = Number(prompt("Цена товара")) || 0;
+const productPriceInput = prompt("Цена товара");
 
-console.log("Тип данных 'Количество товара':", typeof productQuantity);
-console.log("Тип данных 'Цена товара':", typeof productPrice);
+// Преобразуем введённые данные в числа
+const productQuantity = Number(productQuantityInput);
+const productPrice = Number(productPriceInput);
 
-const totalPrice = productQuantity * productPrice;
-console.log(`Вы заказали ${productQuantity} ед. товара "${productName}" на сумму ${totalPrice} у.е.`);
+// Проверяем, является ли количество товара числом
+if (!isNaN(productQuantity) && productQuantity >= 0 && !isNaN(productPrice) && productPrice >= 0) {
+    const totalPrice = productQuantity * productPrice;
+    console.log(`Вы заказали ${productQuantity} ед. товара "${productName}" на сумму ${totalPrice} у.е.`);
+} else {
+    console.log("Вы ввели некорректные данные");
+}
+
